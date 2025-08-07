@@ -30,8 +30,8 @@ current_coaches.fillna(0, inplace=True)
 probs = model.predict_proba(current_coaches[features])[:, 1]
 current_coaches['Hall of Fame'] = probs
 
+current_coaches.to_excel("results.xlsx")
+
 print(current_coaches[['Coach', 'Hall of Fame']].sort_values(by='Hall of Fame', ascending=False))
 
-importances = model.feature_importances_
-for f, score in zip(features, importances):
-    print(f"{f}: {score:.4f}")
+
